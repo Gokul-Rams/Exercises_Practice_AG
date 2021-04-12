@@ -1,0 +1,43 @@
+#! /bin/bash
+
+a=1
+b=1
+
+echo "Febbanaci Series"
+echo "Enter n: "
+read n
+
+echo "enter the choice"
+echo "1)Do you print n no of times
+2)print upto n number"
+
+read choice
+
+if [ $choice -eq 1 ]
+then
+	echo "print n no of times"
+	echo $a
+	echo $b
+	i=2
+	while [ $i -lt $n ] 
+	do
+		c=$(($a+$b))
+		a=$b
+		b=$c
+		i=$(($i+1))
+		echo $c
+	done
+else
+	echo "print up to n"
+	echo $a
+	echo $b
+	c=$(($a+$b))
+	while [ $c -lt $n ]
+	do
+		echo $c
+		a=$b
+		b=$c
+		c=$(($a+$b))
+	done
+fi
+

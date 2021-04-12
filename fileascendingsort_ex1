@@ -1,0 +1,52 @@
+#! /bin/bash
+#Author: Gokul
+#to Sort the file contents
+#Date Created: 12/04/2021
+#Date Modified: 12/04/2021
+
+echo "enter the file name to sort"
+read fname
+
+declare -a nums
+j=0
+content=$(<$fname)
+for i in $content
+do
+	nums[$j]=$i
+	j=$(($j+1))
+done
+
+i=0
+while [ $i -lt $j ]
+do
+	k=$(($i+1))
+	min=${nums[$i]}
+	minin=-1
+	while [ $k -lt $j ]
+	do
+		if [ ${nums[$k]} -lt $min ]
+		then
+			min=${nums[$k]}
+			minin=$k
+		fi
+		k=$(($k+1))
+	done
+	if [ $minin -ne -1 ]
+        then
+            temp=${nums[$i]}
+            nums[$i]=${nums[$minin]}
+            nums[$minin]=$temp
+        fi
+	i=$(($i+1))
+done
+
+echo
+echo "Sorted List of entries" > ascendingsorted-output
+i=0
+while [ $i -lt $j ]
+do
+	echo ${nums[$i]} >> ascendingsorted-output
+       	i=$(($i+1))	
+done
+echo "sorting complete
+ascending ordered output written to file \"ascendingsorted-output\""

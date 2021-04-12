@@ -1,0 +1,88 @@
+#! /bin/bash
+#Author: Gokul
+#Create a log of what is in the dir
+#Date Created: 12/04/2020
+#Date Modified: 12/04/2020
+
+function logonterminal {
+	echo "`pwd` Diractory Log"
+	echo "Time Stamp `date`"
+	echo "Log by `whoami`"
+
+	echo
+	totalnos=$(ls | wc -l)
+	echo "Total No of files: $totalnos"
+	echo	
+	slno=1;
+	for i in *
+	do
+		echo "$slno	`file $i | awk '{print $1="" $2 $3 $4 $5 $6 $7 $8}' | sed 's/,.*$//'`	`ls -l $i | awk '{print $3}'`	$i"	
+		slno=$(($slno+1))
+	done
+	return
+}
+
+function logonplaintext {
+	touch mydirlog
+	echo "`pwd` Diractory Log" >> mydirlog
+        echo "Time Stamp `date`" >> mydirlog
+        echo "Log by `whoami`" >> mydirlog
+
+        echo >> mydirlog
+        totalnos=$(ls | wc -l) >> mydirlog
+        echo "Total No of files: $totalnos" >> mydirlog
+        echo >> mydirlog
+        slno=1;
+        for i in *
+        do
+                echo "$slno  `file $i | awk '{print $1="" $2 $3 $4 $5 $6 $7 $8}' | sed 's/,.*$//'`  `ls -l $i | awk '{print $3}'`  $i" >> mydirlog  
+                slno=$(($slno+1))
+        done
+        return
+}
+
+function logonhtml {
+	touch mydirlog.html
+	echo "<html><body>" > mydirlog.html
+        echo "`pwd` Diractory Log" >> mydirlog.html
+        echo "<br>Time Stamp `date`" >> mydirlog.html
+        echo "<br>Log by `whoami`" >> mydirlog.html
+	echo "<hr>" >> mydirlog.html
+
+        echo >> mydirlog.html
+        totalnos=$(ls | wc -l) >> mydirlog.html
+        echo "<br>Total No of files: $totalnos" >> mydirlog.html
+        echo "<table>
+	<th>slno</th>
+	<th>filetype</th>
+	<th>owner</th>
+	<th>filename</th>">> mydirlog.html
+        slno=1;
+        for i in *
+        do
+		echo "<tr>" >> mydirlog.html
+                echo "<td>$slno</td>  
+		<td>`file $i | awk '{print $1="" $2 $3 $4 $5 $6 $7 $8}' | sed 's/,.*$//'`</td>  
+		<td>`ls -l $i | awk '{print $3}'`</td>
+		<td>$i</td>" >> mydirlog.html
+                slno=$(($slno+1))
+		echo "</tr>" >> mydirlog.html
+        done
+	echo "</body></html>" >> mydirlog.html
+	return
+}
+echo "Enter the type of logging
+1) On terminal
+2) On plain text file
+3) On HTML formatted output file"
+
+read choice
+
+echo
+case $choice in 
+	1)logonterminal;;
+	2)logonplaintext;;
+	3)logonhtml;;
+	*)echo "Invalid option"
+esac
+echo

@@ -1,0 +1,56 @@
+#! /bin/bash
+#Author: Gokul
+#Date Created: 12/04/2021
+#Date Modified: 12/04/2021
+#Check the top sites status in the world
+
+ls -l ~/.checksites/.mysites &> /dev/null
+if [ $? -ne 0 ]
+then 
+	mkdir ~/.checksites
+	touch ~/.checksites/.mysites
+	echo "www.google.com" >> ~/.checksites/.mysites
+	echo "www.yahoo.com" >> ~/.checksites/.mysites
+	echo "www.bing.com" >> ~/.checksites/.mysites
+	echo "www.amazon.com" >> ~/.checksites/.mysites
+	echo "www.softwareag.com" >> ~/.checksites/.mysites
+fi
+
+for lines in $(<~/.checksites/.mysites)
+do
+	ping -c 1 $lines > /dev/null
+	if [ $? -ne 0 ] 
+	then
+		echo ":( $lines is down"
+		echo
+	else
+		echo ":) $lines is up and running"
+		echo
+	fi
+done
+
+echo "want to add more sites to the list and check status(y/n)"
+read choice
+
+if [ $choice == "y" ]
+then
+	echo "enter the number of sites you want to add: "
+	read n
+	for i in $(seq 1 $n)
+	do
+		echo "enter the ${i}th site name: "
+		read name 
+		echo $name >> ~/.checksites/.mysites
+		
+		ping -c 1 $name > /dev/null
+		if [ $? -eq 0 ]
+		then
+			echo "$name is up and running"
+			echo
+		else
+			echo "$name is down"
+			echo
+		fi
+
+	done
+fi

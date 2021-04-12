@@ -1,0 +1,45 @@
+#! /bin/bash
+#Author: gokul
+#Purpose:Memory game to test your memory
+#Date Created: 12/04/2021
+#Date Modified: 12/04/2021
+
+echo "Memory game"
+echo "Enter the user name: "
+read uname
+echo "Enter the No of secounds: "
+read secs
+echo "Pick the No of digits:
+1) 1 Digit
+2) 2 Digit
+3) 3 Digit
+"
+read digs
+echo 
+echo "Memorize the Digits"
+echo 
+case $digs in
+	1) ran=${RANDOM:0:1};;
+	2) ran=(${RANDOM:0:1}${RANDOM:0:1});;
+	3) ran=(${RANDOM:0:1}${RANDOM:0:1}${RANDOM:0:1});;
+	*) echo "Invaid digits";;
+esac
+echo $ran
+echo
+i=0
+while [ $i -lt $secs ]
+do
+	echo "$(($i+1)) secound over"
+	i=$(($i+1))
+	sleep 1
+done
+clear
+echo "Dont Scroll Up and Try to cheat
+Enter the memorized Digits: "
+read ans
+if [ $ans -eq $ran ]
+then
+	echo ":) $uname You Won!..."
+else
+	echo ":( $uname You Lose!..."
+fi
