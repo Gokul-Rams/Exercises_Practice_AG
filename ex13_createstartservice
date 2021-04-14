@@ -1,0 +1,25 @@
+#! /bin/bash
+#Author: Gokul
+#Date Created: 14/04/2021
+#Date Modified: 14/04/2021
+
+if [ `whoami` == 'root' ]
+then
+	read -p "Enter the path where the service script is available(eg home/myscript):" spath
+	echo "[Service]
+	ExecStart=$spath
+	Restart=on-failure" > /etc/systemd/system/myservice.service
+
+	echo "reloading the servicec files"
+	sudo systemctl daemon-reload
+
+	echo
+	echo "starting the service" 
+	sudo systemctl start myservice.service
+
+	echo "service started use systemctl status myservice.service to view"
+
+else
+	echo "root permission needed"
+fi
+

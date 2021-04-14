@@ -1,0 +1,22 @@
+#! /bin/bash
+#Author: Gokul
+#Date Created: 14/04/2021
+#Date Modified: 14/04/2021
+#update mask for the user tuser created using previous exercise
+#It is needed to execute the previous exercise
+
+changeumask () 
+{
+	#`sudo su - tuser -c "touch ~/test"`
+	`sudo su - tuser -c "umask 0644"`
+	umas=`sudo su - tuser -c "umask"`
+	use=`sudo su - tuser -c "whoami"`
+	return
+}
+if [ `whoami` == root ]
+then
+	changeumask
+	echo "umask updated for $use to $umas"
+else
+	echo "root permission neede to change permission for other user"
+fi

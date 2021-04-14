@@ -1,0 +1,23 @@
+#! /bin/bash
+#Author: Gokul
+#Date Modified: 14/04/2021
+#Date created: 14/04/2021
+#find the file sample.txt and coppy it to /tmp/found.txt
+
+cd /
+
+#getting the first instance of list of files found
+locations=`locate sample.txt | head -n 1`
+
+if [ $locations -a -n $locations ]
+then
+	echo "File found at $locations"
+	echo
+        cp $locations /tmp/found.txt
+
+	echo "copied file to /tmp/found.txt"
+	echo
+else
+	echo "no file names sample.txt found.."
+	echo "try using "sudo updatedb" command to update recent files to locate db"
+fi

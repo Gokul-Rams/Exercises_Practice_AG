@@ -1,0 +1,15 @@
+#! /bin/bash
+#Author: Gokul R
+#Date Created: 14/04/2021
+#Date Modified: 14/04/2021
+#the script to run by the service
+
+echo "service started"
+echo
+i=0
+while true
+do	
+	echo "service ran for $i secs"
+	i=$(($i+5))
+	sleep 5
+done 

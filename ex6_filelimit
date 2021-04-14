@@ -1,0 +1,14 @@
+#! /bin/bash
+#Author: Gokul
+#Date Created: 14/04/2021
+#Date Modified: 14/04/2021
+#to set the open file size to 100000
+
+if [ `whoami` == 'root' ]
+then
+	sudo sysctl -w fs.file-max=100000
+	#`sysctl -w fs.file-max=100000`
+	echo "file limit set to `cat /proc/sys/fs/file-max`"
+else
+	echo "root permission needes try using sudo or su command"
+fi

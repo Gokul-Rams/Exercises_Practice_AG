@@ -1,0 +1,26 @@
+#! /bin/bash
+#Author: Gokul
+#Date Created: 14/04/2021
+#Date modified: 14/04/2021
+#Create a swap file in the given path of size 512
+#root permission needed as swaping by normal user is insecure
+
+if [ `whoami` != "root" ]
+then
+	echo "root permission needed to set up swap space"
+else
+read -p "Enter the path to create swap file(with file name in path eg:/home/swapfile): " path
+echo
+echo "creating block of file.."
+
+sudo fallocate -l 512M $path
+
+sudo echo "changing permission to yourself to only owner"
+
+sudo chmod 600 $path
+echo
+echo "setting up and turning on swap area"
+echo
+sudo mkswap $path
+sudo swapon $path
+fi

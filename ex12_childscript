@@ -1,0 +1,12 @@
+#! /bin/bash
+#Author: Gokul
+#Date Created: 14/04/2021
+#Date Modified: 14/05/2021
+#child script executed by parent
+
+echo "Inside Child script"
+echo "Going to sleep for 5 secs"
+
+sleep 5
+
+echo "Get up from sleep Exiting from child script"

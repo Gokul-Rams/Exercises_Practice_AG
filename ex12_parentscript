@@ -1,0 +1,18 @@
+#! /bin/bash
+#Author: Gokul R
+#Date Created: 14/04/2021
+#Date Modified: 14/04/2021
+#to invoke the child script in backgroung waih for child script to complete and exit parent
+
+echo "Starting patent script"
+echo
+echo "invoking child script"
+echo
+echo
+./ex12_childscript &
+
+cpid=$!
+wait $cpid
+echo
+echo
+echo "exiting from parent"

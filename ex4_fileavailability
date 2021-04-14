@@ -1,0 +1,16 @@
+#! /bin/bash
+#Author: Gokul
+#Date Created: 14/04/2021
+#Date Modified: 14/04/2021
+#check of availability of /data/loop.txt once found exit with status code 1
+#execute previous exercise or create diractory /data 
+
+while true
+do
+	ls /data/loop.txt 2> /dev/null 
+	if [ $? -eq 0 ]
+	then
+		echo "/data/loop.txt file found"
+		exit 1
+	fi
+done

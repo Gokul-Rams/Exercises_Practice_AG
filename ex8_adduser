@@ -1,0 +1,14 @@
+#! /bin/bash
+#Author: Gokul
+#Date created: 14/04/2021
+#Date Modified: 14/04/2021
+#used to create a user with name tuser,dir /home/testuser and group testgroup
+
+if [ `whoami` == 'root' ]
+then
+	sudo addgroup testgroup
+	echo "enter the password for the user"
+	sudo adduser -ingroup "testgroup" -home "/home/testuser" tuser
+else
+	echo "Root permission need for adding user try using sudo or su"
+fi

@@ -1,0 +1,17 @@
+#! /bin/bash
+#Author: Gokul
+#Date Created: 14/04/2021
+#Date Modified: 14/04/2021
+#used to create a file under the /data dir
+
+if [ `whoami` == "root" ]
+then
+	mkdir /data
+
+	touch /data/sample.txt
+	echo "this is sample file" > /data/sample.txt
+
+	echo "File created and data entered.."
+else
+	echo "root permission needed to create file at /data"
+fi

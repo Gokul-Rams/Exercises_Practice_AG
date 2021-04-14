@@ -1,0 +1,22 @@
+#! /bin/bash
+#Author: Gokul
+#Date Created: 14/04/2021
+#Date Modified: 14/04/2021
+#used to create a symbolic link for file /data/sample.txt in temporary files dir /tmp/sample.txt
+
+res=ls /data/sample.txt
+if [ $res -a -n $res ]
+then
+	echo "File not created in ex1 need to execute ex 1 first"
+	exit 1
+fi
+
+ln -s /data/sample.txt /tmp/sample.txt  
+if [ $? -ne 0 ]
+then
+	echo "root permission needed use sudo or su"
+	exit 1
+else
+	echo "Symbolic link for file /data/sample.txt created at /tmp/sample.txt"
+	exit 0
+fi

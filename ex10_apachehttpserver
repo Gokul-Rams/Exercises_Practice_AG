@@ -1,0 +1,22 @@
+#! /bin/bash
+#Author: Gokul
+#Date Created: 14/04/2021
+#Date Modified: 14/05/2001
+#make the apache http respond at port 8080 with response 8080
+
+if [ `whoami` == "root" ]
+then
+	echo "stoping server to configure"
+	echo
+	sudo apachectl stop
+	sudo sed -i -E "s/^Listen [0-9]+$/Listen 8080/" /etc/apache2/ports.conf
+	sudo cat /var/www/html/index.html > /var/www/html/indexbuckup.html
+	echo "Welcome to Home Page" > /var/www/html/index.html
+	echo
+	echo "starting server"
+	sudo apachectl start
+	echo
+	echo "you can now listern in post 8080 at your browser"
+else
+	echo "root permission needed"
+fi

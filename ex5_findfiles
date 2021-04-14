@@ -1,0 +1,10 @@
+#! /bin/bash
+#Author: Gokul
+#Date cteated: 14/04/2021
+#Date Modified: 14/04/2021
+#find file that contains localhost in it
+
+find /etc -name "*localhost*" 1> /tmp/find.out 2> /tmp/find.err
+
+echo "find output redirected to /tmp/find.out"
+echo "find errors redirected to /tmp/find.err"
