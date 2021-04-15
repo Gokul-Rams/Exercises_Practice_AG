@@ -1,0 +1,11 @@
+#! /bin/bash
+#Author: Gokul
+#Date Created: 14/04/2021
+#Date Modified: 14/04/2021
+#to parse the given json and find values
+
+read -p "enter the file path to read: " path
+
+read -p "enter the feild to read form json: " feild
+
+jq .$feild $path
