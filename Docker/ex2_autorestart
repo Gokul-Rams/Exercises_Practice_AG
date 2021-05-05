@@ -1,0 +1,7 @@
+# Author: Gokul
+# Date Created: 03/05/2021
+# Purpose : spin up a nginx:1.19.10 container and make it restart on fatal error
+
+echo "creating ngnix container that restarts on failure"
+echo
+docker run -it --name=ex2_ngnixcontainer --restart=on-failure:10 nginx:1.19.10    

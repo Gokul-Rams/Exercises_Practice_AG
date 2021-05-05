@@ -1,0 +1,10 @@
+#!/bin/bash
+# Author: Gokul
+# Purpose: create a persistent volume hostpath redis-pv from ex8_hostpathpv.yaml file
+echo "Creating redis-pv persistent volume of 2gb storage...."
+echo
+kubectl create -f ex8_hostpathpv.yaml
+
+echo "checking pv...."
+echo
+kubectl get pv redis-pv

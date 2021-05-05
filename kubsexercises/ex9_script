@@ -1,0 +1,10 @@
+#!/bin/bash
+# Author: Gokul
+# Purpose: create a persistent volume claim redis-pvc to claim redis-pv from ex9_redispvc.yaml file
+echo "Creating redis-pvc persistent volume claim to claim pv redis-pv...."
+echo
+kubectl create -f ex9_redispvc.yaml
+
+echo "checking pvc...."
+echo
+kubectl get pvc redis-pvc

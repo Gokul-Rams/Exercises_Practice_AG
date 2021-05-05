@@ -1,0 +1,11 @@
+#!/bin/bash
+# Author: Gokul
+# Purpose: to create a node port service to expose port 80 and 6379 of the ex3-nginx-redis pod
+echo "Creating a node port service to expose port 80 6379 of pod ex3-nginx-redis...."
+echo
+
+kubectl create -f ex4_nodeport.yaml
+
+echo "checking service...."
+echo
+kubectl get service ex4-nginx-redis-nodeport

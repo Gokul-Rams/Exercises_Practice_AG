@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-server-cluster
+  labels:
+    app: ex2-kubsexercise
+    type: service
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: ex1-kubsexercise
+    type: proxywebserver        

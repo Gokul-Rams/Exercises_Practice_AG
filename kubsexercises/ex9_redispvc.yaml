@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata: 
+  name: redis-pvc
+  labels:
+    app: ex9-kubsexercise
+    type: pvc
+spec:
+  resources:
+    requests:
+      storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""  
+  selector:
+    matchLabels:
+      app: ex8-kubsexercise
+      type: pv     

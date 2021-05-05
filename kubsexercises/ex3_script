@@ -1,0 +1,11 @@
+#!/bin/bash
+# Author: Gokul
+# Purpose: to create a pod with redis and nginx containers in it
+echo "Creating a pod with nginx and redis containers...."
+echo
+
+kubectl create -f ex3_multicontainerpod.yaml
+
+echo "checking pod...."
+echo
+kubectl get pod ex3-nginx-redis

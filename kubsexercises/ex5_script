@@ -1,0 +1,19 @@
+#!/bin/bash
+# Author: Gokul
+# Purpose: to create a deployment web-deploy of nginx:1.19.10 with 2 replicas
+echo "Creating a nginx:1.19.10 deployment web-deploy with 2 replicas...."
+echo
+
+kubectl create -f ex5_webdeploy.yaml
+
+echo "checking deployment...."
+echo
+kubectl get deployment web-deploy
+
+echo "checking replicas of deployment...."
+echo
+kubectl get replicaset | grep "web-deploy"
+
+echo "checking pods of deployment...."
+echo
+kubectl get pods | grep "web-deploy"

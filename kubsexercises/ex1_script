@@ -1,0 +1,11 @@
+#!/bin/bash
+# Author: Gokul
+# Purpose: to run the ex1_webserverpod.yaml file and create a pod
+echo "Creating pod web server with nginx container...."
+echo
+
+kubectl create -f ex1_webserverpod.yaml
+
+echo "checking pods..."
+echo
+kubectl get pod web-server

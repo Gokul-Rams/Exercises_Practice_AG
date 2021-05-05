@@ -1,0 +1,15 @@
+#!/bin/bash
+# Author: Gokul
+# Purpose: to scale up web-deploy deployment to 5 replicas
+
+echo "Scaling up web-deploy deployment to 5 replicas..."
+echo
+kubectl scale deployment web-deploy --replicas=5
+
+echo "checking replicas of deployment...."
+echo
+kubectl get replicaset | grep "web-deploy"
+
+echo "checking pods of deployment...."
+echo
+kubectl get pods | grep "web-deploy"

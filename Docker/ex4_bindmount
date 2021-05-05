@@ -1,0 +1,7 @@
+# Author: Gokul
+# Date Created: 03/05/2021
+# Purpose: To spin up container redis:6.2.2 and mount /mnt/redis-data to /data of the container
+
+echo "creating redis container and mounting /mnt/redis-data to /data dir runs in foreground"
+echo
+docker run -it --name=ex4_redis --mount type=bind,source=/mnt/redis-data,target=/data redis:6.2.2

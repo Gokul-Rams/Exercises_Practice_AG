@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: ex4-nginx-redis-nodeport
+  labels:
+    app: ex4_kubsexercise
+    type: nodeport
+spec:
+  type: NodePort
+  ports:
+    - name: nginx-node
+      port: 80
+      targetPort: 80
+      nodePort: 30001
+    - name: redis-node 
+      port: 6379
+      targetPort: 6379
+      nodePort: 30002
+  selector:
+    app: ex3-kubsexercise
+    type: proxyanddb        

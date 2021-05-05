@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deploy
+  labels:
+    app: ex5-kubsexercise
+    type: deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ex5-kubsexercise
+      type: proxywebserver
+  template:
+    metadata: 
+      name: ex5-nginx
+      labels:
+        app: ex5-kubsexercise
+        type: proxywebserver
+    spec:
+      containers:
+        - name: ex5-nginx-container
+          image: nginx:1.19.10            

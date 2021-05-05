@@ -1,0 +1,7 @@
+# Author: Gokul
+# Date created: 03/05/2021
+# Purpose: spin up a container with image nginx:1.19.10 and enter into shell
+
+echo "creating ngnix container and entering into container terminal.."
+echo 
+docker run -i -t --name=nginxcontainer nginx:1.19.10 /bin/bash 

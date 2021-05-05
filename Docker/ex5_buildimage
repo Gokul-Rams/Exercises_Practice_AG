@@ -1,0 +1,12 @@
+# Author: Gokul
+# Purpose: To build a docker image with a application in it
+# apache httpd application is build in image
+
+docker build -t sampleapp:latest .
+
+echo "Image build sucessfull"
+echo
+echo "Running the image...."
+echo "ascess the application from container ip at port 80"
+echo 
+docker run sampleapp:latest

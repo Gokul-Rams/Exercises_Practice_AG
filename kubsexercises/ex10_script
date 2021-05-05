@@ -1,0 +1,14 @@
+#!/bin/bash
+# Author: Gokul
+# Purpose: create a redis pod and mount redispv volume through redis-pvc claim using ex10_redispvcpod.yaml
+echo "Creating redis pod and mounting redis-pv through redis-pvc claim...."
+echo
+kubectl create -f ex10_redispvcpod.yaml
+
+echo "checking pod...."
+echo
+kubectl get pod redis
+
+echo "checking mount of redis-pvc...."
+echo
+kubectl describe pod redis

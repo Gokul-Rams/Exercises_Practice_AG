@@ -1,0 +1,11 @@
+#!/bin/bash
+# Author: Gokul
+# Purpose: to create a service to expose port 80 of web-server pod within cluster
+echo "Creating service web-server-cluster to expose port 80 of webserver within cluster...."
+echo
+
+kubectl create -f ex2_clusterip.yaml
+
+echo "checking service...."
+echo
+kubectl get service web-server-cluster

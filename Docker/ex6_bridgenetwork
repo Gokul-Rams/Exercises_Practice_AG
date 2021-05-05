@@ -1,0 +1,14 @@
+# Author: Gokul
+# Date Created: 03/05/2021
+# Purpose: create a network named test-app and run two containers of image redis and nginx and connect to the network test-app
+
+docker network create --driver=bridge test-app
+echo "Bridge Network \"test-app\" created"
+
+echo
+docker run -it -d --name=ex6_nginx --network=test-app nginx:1.19.10
+echo "Nginx container \"ex6_nginx\" created"
+
+echo
+docker run -it -d --name=ex6_redis --network=test-app redis:6.2.2
+echo "Redis container \"ex6_redis\" created"

@@ -1,0 +1,6 @@
+# Author: Gokul
+# DateModified: 03/05/2021
+# Purpose: to spin up nginx:1.19.10 container and bind port container's 80 to host port 8080 
+
+echo "creating a ngnix container and exposing it at host port 8080" 
+docker run -it --name=ex3_ngnixcontainer -p 8080:80 nginx:1.19.10

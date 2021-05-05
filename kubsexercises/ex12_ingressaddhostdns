@@ -1,0 +1,9 @@
+#!/bin/bash
+# Author: Gokul
+# Purpose: to assign all the incoming request to ingress ip address using wildcard dns records
+
+echo "Enter the Ip address of ingress : "
+read ipaddr
+echo "$ipaddr  *" >> /etc/hosts
+echo "you can asecss the ingress through * wildcart hostname/"
+

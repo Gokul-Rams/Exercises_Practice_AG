@@ -1,0 +1,23 @@
+#!/bin/bash
+# Author: Gokul
+# Purpose: to create an ingress for web deployment web deploy
+# use wild cart host name in ingress 
+
+echo "Creating a node port service for wed-deploy deployment to connect to ingress....."
+echo
+kubectl create -f ex12_ingressservice.yaml
+
+echo "Creating a nginx ingress controller resource with wildcart hostname...."
+echo
+kubectl create -f ex12_ingressresource.yaml
+
+echo "Note the Ip address of ingress to add to local DNS record...."
+echo
+kubectl get ingress webdeploy-ingress
+
+echo "Adding local DNS record to route traffic to ingress's ip address...."
+echo
+./ex12_ingressaddhostdns
+
+echo
+echo "Now you can curl or visit the url through browser to check ingress working...."

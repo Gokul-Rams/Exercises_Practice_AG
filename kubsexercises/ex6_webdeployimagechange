@@ -1,0 +1,10 @@
+#!/bin/bash
+# Author: Gokul
+# Purpose: change image used in web-deploy deployment to nginx:1.20.0
+echo "Changing image for deployment web-deploy to nginx:1.20.0...."
+echo
+kubectl set image deployment web-deploy ex5-nginx-container=nginx:1.20.0 --record=true
+
+echo "checking image of deployment...."
+echo
+kubectl describe deployment web-deploy

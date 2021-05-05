@@ -1,0 +1,11 @@
+#!/bin/bash
+# Author: Gokul
+# Purpose: to increase the storage size of redis-pv volume to 3gb
+
+echo "increasing the storage size of redis-pv to 3gb using patch....."
+echo
+kubectl patch pv redis-pv -p='{"spec": {"capacity": {"storage": "3Gi"}}}'
+
+echo "Checking updated size of redis-pv...."
+echo
+kubectl get pv redis-pv
