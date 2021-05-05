@@ -4,7 +4,7 @@
 
 echo "increasing the storage size of redis-pv to 3gb using patch....."
 echo
-kubectl patch pv redis-pv -p='{"spec": {"capacity": {"storage": "3Gi"}}}'
+kubectl patch pv redis-pv -p='{"spec": {"capacity": {"storage": "3Gi"}}}' --record=true
 
 echo "Checking updated size of redis-pv...."
 echo
